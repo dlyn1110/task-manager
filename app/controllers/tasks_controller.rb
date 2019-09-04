@@ -1,4 +1,4 @@
-class TasksController < ApplicationController
+class TasksController < ApplicationsController
 
   get '/tasks'do
     if logged_in?
