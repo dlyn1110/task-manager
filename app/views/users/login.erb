@@ -1,7 +1,23 @@
-<h1> Welcome to your Task Manager! </h1>
-
+<h1> Welcome to Task-Manager! </h1>
+<% if flash.has?(:message) %>
+  <h2> <%= flash[:message] %> </h2>
+<% end %>
 
 <br>
 <br>
 
 <h2> Please Login below </h2>
+
+<form action="/login" method="post">
+  Email <input type="text" name="email" required>
+  Password <input type="password" name="password" required>
+  <input type="submit" value="Submit">
+</form>
+
+<br>
+<br>
+
+<h3> New to Task-Manager? </h3>
+<form action="/signup">
+    <input type="submit" value=" Sign Up">
+</form>
