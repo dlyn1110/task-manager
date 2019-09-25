@@ -16,7 +16,7 @@ class UsersController < ApplicationController
    user = User.find_by(:email => params[:email])
      if !user
        flash[:message] = "You do not have an account."
-       erb :"users/create_user"
+       erb :"users/signup"
      else
        if user && user.authenticate(params[:password])
          session[:user_id] = user.id
