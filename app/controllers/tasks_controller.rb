@@ -1,12 +1,13 @@
 class TasksController < ApplicationController
 
   get '/tasks'do
-      if logged_in?
-        @tasks = current_user.tasks
-        erb :'tasks/index'
-      else
-        redirect to '/signup'
-     end
-    end
+    redirect_if_not_logged_in
+    erb :'tasks/tasks'
+  end
+
+  get '/tasks/new' do
+    redirect_if_not_logged_in
+    erb :'tasks/create'
+  end
 
 end

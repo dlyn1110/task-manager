@@ -1,0 +1,38 @@
+<h1> Welcome to your Tasks <%= current_user.name %>! </h1>
+
+<% if flash.has?(:message) %>
+  <h2> <%= flash[:message] %> </h2>
+<% end %>
+
+<br>
+<br>
+
+<h2> All Tasks </h2>
+<ol>
+<% Task.all.each do |task| %>
+  <li><a href="/tasks/<%=task.slug%>"></a> <%=task.user%> </li>
+  <%end%>
+</ol>
+
+<br>
+<br>
+
+<h2> Your Tasks </h2>
+<ol>
+<% current_user.tasks.each do |task| %>
+  <li><a href="/tasks/<%=task.slug%>"</a>
+  <%end%>
+</ol>
+
+<br>
+<br>
+
+<form action="/tasks/new">
+    <input type="submit" value="+ Add new task" />
+</form>
+
+<br>
+
+<form action="/logout">
+    <input type="submit" value="Logout" />
+</form>

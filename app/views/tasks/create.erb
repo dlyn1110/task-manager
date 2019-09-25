@@ -1,0 +1,24 @@
+<h1> Add a new Task </h1>
+<% if flash.has?(:message) %>
+  <h2> <%= flash[:message] %> </h2>
+<% end %>
+
+<br>
+<br>
+
+  <form action="/tasks" method="post">
+    <h3> Task Name: </h3>
+    <textarea name="name" rows="2" cols="80" required ></textarea>
+
+
+    <br>
+    <br>
+
+    <input type="submit" value="Save">
+  </form>
+
+<br>
+
+  <form action="/tasks">
+      <input type="submit" value=" < Back to all tasks">
+  </form>
