@@ -1,4 +1,4 @@
-<h1> Welcome to your Tasks <%= current_user.name %>! </h1>
+<h1> Welcome to your Task Manager <%= current_user.name %>! </h1>
 
 <% if flash.has?(:message) %>
   <h2> <%= flash[:message] %> </h2>
@@ -7,32 +7,10 @@
 <br>
 <br>
 
-<h2> All Tasks </h2>
-<ol>
-<% Task.all.each do |task| %>
-  <li><a href="/tasks/<%=task.slug%>"></a> <%=task.user%> </li>
-  <%end%>
-</ol>
-
-<br>
-<br>
-
-<h2> Your Tasks </h2>
-<ol>
-<% current_user.tasks.each do |task| %>
-  <li><a href="/tasks/<%=task.slug%>"</a>
-  <%end%>
-</ol>
-
-<br>
-<br>
-
-<form action="/tasks/new">
-    <input type="submit" value="+ Add new task" />
-</form>
-
-<br>
-
-<form action="/logout">
-    <input type="submit" value="Logout" />
-</form>
+<h2>All Tasks</h2>
+<div class="list-group" "text-center">
+   <% Task.all.each do |task| %>
+     <h3><a href="tasks/<%= task.id%>" class="list-group-item"><%= task.name %></a></h3>
+   <% end %><br><br>
+   <a class="btn btn-sm btn-primary" href="/tasks/new">Create Task</a>
+   </div>
