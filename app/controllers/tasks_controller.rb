@@ -16,7 +16,7 @@ class TasksController < ApplicationController
        flash[:message] = "Please ensure all the fields are populated."
        redirect to '/tasks/new'
      else
-       task = current_user.tasks.create(name: params[:name].capitalize)
+       @task = current_user.tasks.create(name: params[:name].capitalize)
        flash[:message] = "You have successfully added this new task."
        redirect to '/tasks'
        end
