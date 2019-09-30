@@ -1,1 +1,23 @@
-<h1> Editing </h1>
+<h1> Editing: <%=@task.name%> </h1>
+<% if flash.has?(:message) %>
+  <h2> <%= flash[:message] %> </h2>
+<% end %>
+
+
+<br>
+<br>
+
+<form action="/tasks/<%=@task.name%>/edit" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+
+  <h3>Task Name: </h3>
+  <textarea name="name" rows="2" cols="80" required><%=@task.name%></textarea>
+
+  <input type="submit" value="Save">
+</form>
+
+<br>
+
+<form action="/tasks">
+    <input type="submit" value="< Back to all tasks">
+</form>
