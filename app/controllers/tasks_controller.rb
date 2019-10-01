@@ -7,7 +7,7 @@ class TasksController < ApplicationController
 
   get '/tasks/new' do
     redirect_if_not_logged_in
-    erb :'tasks/create'
+    erb :'tasks/new'
   end
 
   post '/tasks' do
@@ -33,6 +33,7 @@ class TasksController < ApplicationController
  end
 
  get '/tasks/:id/edit' do
+   #binding.pry
     if logged_in?
       @task = Task.find_by(:id => params[:id])
       if current_user.id == @task.user_id
@@ -59,12 +60,13 @@ class TasksController < ApplicationController
 
   delete '/tasks/:id/delete' do
     if logged_in?
-      @task = Task.find_by(:id => params[:id])
+      @task = Task.find_by(:id =>params[:id])
       if current_user.id == @task.user_id
       @task.delete
       flash[:notice] = "Task successfully removed!"
       redirect to '/tasks'
       else
+      flash[:notice] = "You are not authorized to delete this task."
       redirect to '/login'
       end
     end
