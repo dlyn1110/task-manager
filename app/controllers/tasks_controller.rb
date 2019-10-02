@@ -34,9 +34,9 @@ class TasksController < ApplicationController
 
  get '/tasks/:id/edit' do
    #binding.pry
-    if logged_in?
-      @task = Task.find_by(:id => params[:id])
-      if current_user.id == @task.user_id
+   if logged_in?
+     @task = Task.find_by(:id => params[:id])
+     if current_user.id == @task.user_id
       erb :"tasks/edit"
     else
       flash[:notice] = "You are not authorized to edit this task."
